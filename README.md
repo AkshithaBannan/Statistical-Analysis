@@ -1,15 +1,15 @@
-# Statistical Analysis
+# Statistical Analysis & Data Preprocessing Pipeline
 
-Welcome to the **Statistical Analysis** repository. This project serves as a comprehensive guide, reference, and codebase for implementing foundational and advanced statistical concepts. It bridges the gap between theoretical mathematics and practical, data-driven application.
+Welcome to the **Statistical Analysis** repository. This project contains end-to-end Python implementations of core statistical workflows—bridging raw data exploration, mathematical feature transformation, and parametric interval estimation.
 
 ---
 
 ## Table of Contents
 * [Overview](#-overview)
-* [Key Modules](#-key-modules)
-  * [Descriptive Statistics](#1-descriptive-statistics)
-  * [Inferential Statistics](#2-inferential-statistics)
-  * [Advanced Analytics & Modeling](#3-advanced-analytics--modeling)
+* [Notebooks & Module Architecture](#-notebooks--module-architecture)
+  * [1. Exploratory Data Analysis & Feature Engineering](#1-exploratory-data-analysis--feature-engineering)
+  * [2. Inferential Estimation & Confidence Intervals](#2-inferential-estimation--confidence-intervals)
+* [Data Engineering & Modeling Strategy](#-data-engineering--modeling-strategy)
 * [Technologies Used](#-technologies-used)
 * [Getting Started](#-getting-started)
 
@@ -17,44 +17,47 @@ Welcome to the **Statistical Analysis** repository. This project serves as a com
 
 ## Overview
 
-In data science and machine learning, raw data is often filled with noise. This repository focuses on leveraging statistical principles to extract meaningful patterns, validate assumptions, and build rigorous models. The goal is to move beyond simple numbers to uncover actionable intelligence and predictive insights.
+This repository demonstrates the practical application of statistical theories to real-world datasets. The pipelines handle everything from diagnosing data skewness and outlier evaluation to executing geometric scaling and predictive interval modeling.
 
 ---
 
-## Key Modules
+## Notebooks & Module Architecture
 
-### 1. Descriptive Statistics
-Focuses on summarizing and understanding the core features of a dataset.
-* **Central Tendency:** Mean, Median, and Mode calculations to find the center of data.
-* **Dispersion & Variability:** Range, Variance, and Standard Deviation to measure how spread out the data points are.
-* **Distribution Analysis:** Identifying skewness, kurtosis, and data normality.
+### 1. Exploratory Data Analysis & Feature Engineering (`statistics-1.ipynb`)
+Focused on evaluating a multi-dimensional retail sales performance dataset containing metrics like volumes, margins, and applied pricing structures.
+* **Descriptive Metrics:** Calculated mean, median, mode, and standard deviation distributions to interpret central tendencies.
+* **Asymmetry Mapping:** Computed mathematical skewness values alongside `matplotlib` box plots to isolate features exceeding upper-whisker boundaries.
+* **Categorical Feature Slicing:** Structured targeted `groupby` aggregations to map revenue vectors against dimensions like Business Units (`BU`), unique `Model` iterations, and temporal identifiers.
 
-### 2. Inferential Statistics
-Making predictions, generalizations, or decisions about a large population based on a smaller sample.
-* **Hypothesis Testing:** Implementing A/B testing, Z-tests, T-tests, and Chi-Square tests to determine statistical significance.
-* **Confidence Intervals:** Calculating margins of error to estimate true population parameters.
-* **Probability Distributions:** Working with Binomial, Normal, and Poisson distributions.
+### 2. Inferential Estimation & Confidence Intervals (`Confidence Interval.ipynb`)
+Focused on evaluating sample representatives to construct mathematical probability boundaries around unknown population targets.
+* **Unknown Variance Modeling ($t$-distribution):** Built a 99% confidence interval loop tracking custom sample statistics using degrees of freedom ($df = n-1$).
+* **Known Variance Projections ($Z$-distribution):** Generated a 99% standard normal estimation curve assuming specified historical population deviations.
 
-### 3. Advanced Analytics & Modeling
-Exploring relationships between variables and forecasting outcomes.
-* **Correlation:** Pearson and Spearman coefficients to measure linear and non-linear relationships.
-* **Regression Analysis:** Linear, Multiple, and Logistic regression pipelines to model dependencies.
-* **Anova (Analysis of Variance):** Comparing means across multiple independent groups.
+---
+
+## Data Engineering & Modeling Strategy
+
+To ensure data readiness for modern downstream machine learning models, the following processing foundations were engineered:
+
+* **Z-Score Normalization:** Handled feature scaling using `sklearn.preprocessing.StandardScaler` to map disparate financial matrices into bounded variance spaces centered cleanly between $[-3, +3]$.
+* **One-Hot Encoding (Dummification):** Converted text arrays (`Brand`, `Model`, `SKU`) into machine-readable boolean vectors using `pd.get_dummies()` to completely mitigate implicit order biases during optimization.
 
 ---
 
 ## Technologies Used
 
-* **Languages:** Python 
-* **Core Libraries:** `NumPy`, `SciPy`, `Pandas`, `Statsmodels`
-* **Visualization:** `Matplotlib`, `Seaborn`
+* **Languages:** Python (Pandas, NumPy)
+* **Mathematical Analytics:** SciPy, Statsmodels
+* **Feature Processing:** Scikit-Learn (`StandardScaler`)
+* **Visualization Engine:** Matplotlib, Seaborn
 
 ---
 
 ## Getting Started
 
-To explore the notebooks or run the scripts locally:
+To step through the notebook pipelines locally:
 
-1. Clone the repository:
+1. Clone this repository:
    ```bash
-   git clone [https://github.com/AkshithaBannan/Basic-statistics.git](https://github.com/AkshithaBannan/Basic-statistics.git)
+   git clone [https://github.com/AkshithaBannan/Statistical-Analysis.git](https://github.com/AkshithaBannan/Statistical-Analysis.git)
